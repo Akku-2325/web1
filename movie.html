@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильм - Люди Икс: Дни минувшего будущего</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">КиноКаталог</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <button id="themeToggle" class="btn btn-light">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span> 
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <img src="https://media.kg-portal.ru/movies/x/xmendaysoffuturepast/posters/xmendaysoffuturepast_13.jpg" class="img-fluid" alt="Постер фильма">
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <h1>Люди Икс: Дни минувшего будущего</h1>
+                <p><strong>Жанры:</strong> Фантастика, Боевик</p>
+                <p><strong>Год выпуска:</strong> 23 мая 2014 года</p>
+                <p><strong>Продолжительность:</strong> 132 минуты</p>
+                <p><strong>Режиссер:</strong> Брайан Сингер</p>
+                <p><strong>В ролях:</strong> Хью Джекман, Джеймс МакЭвой, Майкл Фассбендер, Дженнифер Лоуренс, Патрик Стюарт</p>
+                <p><strong>Описание:</strong> В далеком будущем, когда мир захвачен механизмами, Люди Икс борются за выживание...</p>
+
+                <!-- Скрытый контент -->
+                <div id="moreContent" style="display: none;">
+                    <p>В отчаянной попытке предотвратить апокалипсис, мутанты отправляются в прошлое, чтобы изменить ход истории и избежать создания машин, уничтожающих людей и мутантов. Они сражаются не только с внешними врагами, но и с внутренними страхами, стараясь предотвратить катастрофу.</p>
+                </div>
+
+                <!-- Кнопка "Читать дальше" -->
+                <button id="readMoreBtn" class="btn btn-secondary">Читать дальше</button>
+
+                <div class="rating mb-3">
+                    <strong>Рейтинг:</strong>
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <span id="userRating" style="display:none;">0</span>
+                </div>
+
+                <button id="favoriteButton" class="btn btn-primary">Добавить в избранное</button>
+                <button class="btn btn-secondary">Посмотреть позже</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h2>Трейлер фильма</h2>
+        <video width="100%" controls>
+            <source src="https://youtu.be/H8GwmbZnbG8?si=T2skaCN5S6PNhES4" type="video/mp4">
+            Ваш браузер не поддерживает воспроизведение видео.
+        </video>
+    </div>
+    
+
+    <div class="container my-5">
+        <h2>Отзывы пользователей</h2>
+        <div class="user-reviews mb-4">
+            <p><strong>Анна:</strong> Отличный фильм, рекомендую!</p>
+        </div>
+
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="review">Ваш отзыв:</label>
+                <textarea id="review" name="review" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+
+    <div class="container my-5">
+        <h2>Похожие фильмы</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="https://ru-images-s.kinorium.com/movie/1080/1609774.jpg?1678921749" class="card-img-top" alt="Похожий фильм 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Люди Икс: Темный Феникс</h5>
+                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/ru/9/92/X-Men_Apocalypse.jpg" class="card-img-top" alt="Похожий фильм 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Люди Икс: Апокалипсис</h5>
+                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="https://mobikinchik.net/uploads/posts/2017-12/1513514539_462754.jpg" class="card-img-top" alt="Похожий фильм 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Росомаха: Бессмертный</h5>
+                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark text-white text-center py-4">
+        <strong><p>Aldibayeva Akku</p></strong>
+        <p>SE-2325</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="movie.js"></script>
+    <script src="main.js"></script>
+
+    
+</body>
+
+</html>

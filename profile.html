@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя - КиноКаталог</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">КиноКаталог</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto" id="navbarMenu">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <button id="themeToggle" class="btn btn-light">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button id="logoutBtn" class="btn btn-danger">Выйти</button>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Жанры
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="korean-movies.html">Корейские фильмы</a>
+                        <a class="dropdown-item" href="comedies.html">Комедии</a>
+                        <a class="dropdown-item" href="horrors.html">Ужасы</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="all-movies.html">Все фильмы</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="my-4">Личный профиль</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Информация о пользователе</h5>
+                <p><strong>Email:</strong> user@example.com</p>
+                <p><strong>Имя:</strong> Иван Иванов</p>
+                <p><strong>Дата регистрации:</strong> 01.01.2023</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">Изменить пароль</button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Избранные фильмы</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Фильм 1</li>
+                    <li class="list-group-item">Фильм 2</li>
+                    <li class="list-group-item">Фильм 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Просмотренные фильмы</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Фильм A</li>
+                    <li class="list-group-item">Фильм B</li>
+                    <li class="list-group-item">Фильм C</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для изменения пароля -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Изменить пароль</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="changePasswordForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Текущий пароль:</label>
+                            <input type="password" id="currentPassword" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Новый пароль:</label>
+                            <input type="password" id="newPassword" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Подтвердите новый пароль:</label>
+                            <input type="password" id="confirmNewPassword" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark text-white text-center py-4">
+        <strong><p>Aldibayeva Akku</p></strong>
+        <p>SE-2325</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>

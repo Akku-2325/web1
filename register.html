@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">КиноКаталог</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button id="themeToggle" class="btn btn-light">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span> <!-- Иконка для солнца -->
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Вход</a> <!-- Кнопка для входа -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1>Регистрация</h1>
+        <form id="registrationForm">
+            <div class="step" id="step1">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-primary" id="next1">Далее</button>
+            </div>
+
+            <div class="step" id="step2" style="display: none;">
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" class="form-control" minlength="6" required>
+                </div>
+                <button type="button" class="btn btn-secondary" id="back1">Назад</button>
+                <button type="button" class="btn btn-primary" id="next2">Далее</button>
+            </div>
+
+            <div class="step" id="step3" style="display: none;">
+                <div class="form-group">
+                    <label for="confirmPassword">Подтвердите пароль:</label>
+                    <input type="password" id="confirmPassword" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-secondary" id="back2">Назад</button>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </div>
+        </form>
+        <p id="errorMsg" style="color: red;"></p>
+    </main>
+
+    <footer class="footer bg-dark text-white text-center py-4">
+        <strong><p>Aldibayeva Akku</p></strong>
+        <p>SE-2325</p>
+    </footer>
+
+    <script src="reg.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

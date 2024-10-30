@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">КиноКаталог</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button id="themeToggle" class="btn btn-light">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span> <!-- Иконка для солнца -->
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Регистрация</a> <!-- Кнопка для регистрации -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1>Вход</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+            <p id="loginErrorMsg" style="color: red;"></p>
+        </form>
+    </main>
+
+    <footer class="footer bg-dark text-white text-center py-4">
+        <strong><p>Aldibayeva Akku</p></strong>
+        <p>SE-2325</p>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
