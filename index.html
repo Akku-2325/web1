@@ -11,31 +11,28 @@
 
 <body>
     <div id="overlay">
-        <div class="overlay-content">
-            <h2>Добро пожаловать!</h2>
-            <p>Пожалуйста, войдите или зарегистрируйтесь, чтобы продолжить.</p>
-            <a href="register.html" class="btn btn-primary">Логин/Регистрация</a>
-        </div>
+    <div class="overlay-content">
+        <h2>Пожалуйста, войдите или зарегистрируйтесь</h2>
+        <button id="register-btn"><a href="register.html">Зарегистрироваться/Войти</a></button>
     </div>
+</div>
 
-    <div id="mainContent" style="display: none;"></div>
+    
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">КиноКаталог</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>в
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto" id="navbarMenu">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="profile.html">Профиль</a>
                 </li>
                 <li class="nav-item">
-                    <button id="themeToggle" class="btn btn-light">
-                        <span class="theme-icon" id="themeIcon">&#9728;</span>
+                    <button id="subscribeBtn" style="border: none; background: none; color: #f8f9fa;">
+                        Подписаться
                     </button>
-                </li>
-                <li>
-                    <button id="logoutBtn" class="btn btn-danger" style="display: none;">Выйти</button>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,28 +46,39 @@
                         <a class="dropdown-item" href="all-movies.html">Все фильмы</a>
                     </div>
                 </li>
-                <li>
-                    <button id="subscribeBtn" class="btn btn-primary">Подписаться</button>
-    <div id="popup">
-        <div id="popupContent">
-            <span id="closePopup" style="cursor:pointer; float:right;">&times;</span>
-            <h2>Подписка на новости</h2>
-            <p>Введите свой email, чтобы получать обновления о новых фильмах и акциях.</p>
-            <form id="subscribeForm">
-                <div class="form-group">
-                    <label for="subscribeEmail">Email:</label>
-                    <input type="email" id="subscribeEmail" class="form-control" placeholder="Ваш email" required>
-                </div>
-                <button type="submit" class="btn btn-success">Подписаться</button>
-            </form>
-        </div>
-    </div>
-    
+                <li class="nav-item">
+                    <button id="themeToggle" >
+                        <span class="theme-icon" id="themeIcon">&#9728;</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button id="logoutBtn" >
+                        <span>&#x21A9;</span> <!-- Иконка выхода со стрелкой -->
+                    </button>
                 </li>
             </ul>
         </div>
-        
     </nav>
+    
+
+<!-- Popup for subscription -->
+<div id="popup" style="display: none;">
+    <div id="popupContent">
+        <span id="closePopup" style="cursor:pointer; float:right;">&times;</span>
+        <h2>Подписка на новости</h2>
+        <p>Введите свой email, чтобы получать обновления о новых фильмах и акциях.</p>
+        <form id="subscribeForm">
+            <div class="form-group">
+                <label for="subscribeEmail">Email:</label>
+                <input type="email" id="subscribeEmail" class="form-control" placeholder="Ваш email" required>
+            </div>
+            <button type="submit" class="btn btn-success">Подписаться</button>
+        </form>
+    </div>
+</div>
+
+
+
     <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>

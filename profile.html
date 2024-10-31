@@ -20,14 +20,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Главная</a>
                 </li>
-                <li class="nav-item">
-                    <button id="themeToggle" class="btn btn-light">
-                        <span class="theme-icon" id="themeIcon">&#9728;</span>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button id="logoutBtn" class="btn btn-danger">Выйти</button>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Жанры
@@ -40,6 +32,16 @@
                         <a class="dropdown-item" href="all-movies.html">Все фильмы</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <button id="themeToggle" style="border: none; background: none; color: #f8f9fa;">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button id="logoutBtn" >
+                        <span>&#x21A9;</span> <!-- Иконка выхода со стрелкой -->
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -49,77 +51,87 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">Информация о пользователе</h5>
-                <p><strong>Email:</strong> user@example.com</p>
-                <p><strong>Имя:</strong> Иван Иванов</p>
-                <p><strong>Дата регистрации:</strong> 01.01.2023</p>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">Изменить пароль</button>
+                <p><strong>Имя:</strong> <span id="usernameDisplay"></span></p>
+                <p><strong>Дата регистрации:</strong> <span id="registrationDateDisplay"></span></p>
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Избранные фильмы</h5>
-                <ul class="list-group">
-                    <li class="list-group-item">Фильм 1</li>
-                    <li class="list-group-item">Фильм 2</li>
-                    <li class="list-group-item">Фильм 3</li>
-                </ul>
-            </div>
-        </div>
+        <h5 class="my-4">Избранное</h5>
+        <ul id="favoritesList" class="list-group mb-4"></ul>
 
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Просмотренные фильмы</h5>
-                <ul class="list-group">
-                    <li class="list-group-item">Фильм A</li>
-                    <li class="list-group-item">Фильм B</li>
-                    <li class="list-group-item">Фильм C</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <!-- Кнопка для изменения пароля -->
+        <button class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">Изменить пароль</button>
+        <button id="clearStorageBtn">Очистить хранилище</button>
 
-    <!-- Модальное окно для изменения пароля -->
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changePasswordModalLabel">Изменить пароль</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="changePasswordForm">
-                        <div class="form-group">
-                            <label for="currentPassword">Текущий пароль:</label>
-                            <input type="password" id="currentPassword" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="newPassword">Новый пароль:</label>
-                            <input type="password" id="newPassword" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmNewPassword">Подтвердите новый пароль:</label>
-                            <input type="password" id="confirmNewPassword" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-                    </form>
+        <!-- Модальное окно для изменения пароля -->
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="changePasswordModalLabel">Изменить пароль</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label for="currentPassword">Текущий пароль</label>
+                                <input type="password" class="form-control" id="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Новый пароль</label>
+                                <input type="password" class="form-control" id="newPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Подтвердите новый пароль</label>
+                                <input type="password" class="form-control" id="confirmNewPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="footer bg-dark text-white text-center py-4">
-        <strong><p>Aldibayeva Akku</p></strong>
-        <p>SE-2325</p>
-    </footer>
+        <div class="faq-container">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-title">
+                <span>Как я могу связаться с поддержкой?</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-content" style="display: none;">
+                <p>Вы можете связаться с поддержкой по электронной почте support@example.com.</p>
+            </div>
+            <div class="separator"></div> <!-- Разделитель -->
+            <div class="faq-title">
+                <span>Как изменить свой пароль?</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-content" style="display: none;">
+                <p>Чтобы изменить пароль, перейдите в настройки вашего профиля.</p>
+            </div>
+            <div class="separator"></div> <!-- Разделитель -->
+            <div class="faq-title">
+                <span>Где я могу найти информацию о новых фильмах?</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-content" style="display: none;">
+                <p>Информация о новых фильмах доступна на главной странице нашего сайта.</p>
+            </div>
+        </div>
+    
+    <strong><p>Aldibayeva Akku</p></strong>
+    <p>SE-2325</p>
+</footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
     <script src="profile.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

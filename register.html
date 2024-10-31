@@ -18,8 +18,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <button id="themeToggle" class="btn btn-light">
-                        <span class="theme-icon" id="themeIcon">&#9728;</span> <!-- Иконка для солнца -->
+                    <button id="themeToggle" style="border: none; background: none; color: #f8f9fa;">
+                        <span class="theme-icon" id="themeIcon">&#9728;</span>
                     </button>
                 </li>
                 <li class="nav-item">
@@ -32,6 +32,10 @@
     <main class="container my-5">
         <h1>Регистрация</h1>
         <form id="registrationForm">
+            <div class="form-group">
+                <label for="username">Имя:</label>
+                <input type="text" id="username" class="form-control" required>
+            </div>            
             <div class="step" id="step1">
                 <div class="form-group">
                     <label for="email">Email:</label>

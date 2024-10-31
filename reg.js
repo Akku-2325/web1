@@ -3,31 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const errorMsg = document.getElementById('errorMsg');
     let currentStep = 0;
 
-    const clickSound = new Audio('69880c1f5e57698.mp3');
-
-    function playClickSound() {
-        if (!clickSound.paused) {
-            clickSound.pause();
-            clickSound.currentTime = 0; 
-        }
-        clickSound.play();
-    }
-
-    function showStep(step) {
-        const steps = document.querySelectorAll('.step');
-        steps.forEach((s, index) => {
-            s.style.display = (index === step) ? 'block' : 'none'; // Показать текущий шаг, скрыть остальные
-        });
-    }
-
     registrationForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        const username = document.getElementById('username').value; // Добавлено поле имени
         const email = document.getElementById('email').value; 
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
         // Проверка заполненности полей
-        if (!email || !password || !confirmPassword) {
+        if (!username || !email || !password || !confirmPassword) {
             errorMsg.textContent = "Пожалуйста, заполните все поля!";
             return;
         }
@@ -45,13 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Сохранение данных пользователя
-        playClickSound();
         localStorage.setItem("userEmail", email);
         localStorage.setItem("userPassword", password);
+        localStorage.setItem("username", username); // Сохранение имени пользователя
+        localStorage.setItem("registrationDate", new Date().toLocaleDateString()); // Сохранение даты регистрации
         localStorage.setItem("isAuthenticated", "true");
         errorMsg.textContent = "Регистрация прошла успешно!";
 
         // Очистка полей формы
+        document.getElementById('username').value = '';
         document.getElementById('email').value = '';
         document.getElementById('password').value = '';
         document.getElementById('confirmPassword').value = '';
@@ -63,19 +49,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('next1').addEventListener('click', () => {
+        const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
-        if (!email) {
-            errorMsg.textContent = "Пожалуйста, введите email!";
+        if (!username || !email) {
+            errorMsg.textContent = "Пожалуйста, введите имя и email!";
             return;
         }
-        playClickSound();
         currentStep++; // Увеличиваем текущий шаг
         showStep(currentStep); // Показываем следующий шаг
         errorMsg.textContent = ""; 
     });
 
     document.getElementById('back1').addEventListener('click', () => {
-        playClickSound(); 
         currentStep--;
         showStep(currentStep);
     });
@@ -86,13 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
             errorMsg.textContent = "Пароль должен содержать не менее 6 символов!";
             return;
         }
-        playClickSound(); 
         currentStep++;
         showStep(currentStep);
     });
 
     document.getElementById('back2').addEventListener('click', () => {
-        playClickSound(); 
         currentStep--;
         showStep(currentStep);
     });
