@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Кнопка для очистки localStorage
 document.getElementById('clearStorageBtn').addEventListener('click', function() {
     localStorage.clear(); // Очистка всего localStorage
-    alert('localStorage очищен!');
+    createNotification('Данные успешно очищены.', true);
 });

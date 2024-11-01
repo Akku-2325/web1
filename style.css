@@ -239,3 +239,25 @@ body.dark-theme #popup .btn {
 .dropdown:hover .dropdown-menu {
     display: block; /* Показывает меню при наведении */
 }
+
+.blockquote {
+    font-style: italic;
+    margin: 10px 0;
+}
+
+/* Пагинация */
+.pagination .page-link {
+    color: #007bff; /* Цвет ссылок в светлой теме (синий) */
+}
+
+.dark-theme .pagination .page-link {
+    color: black; /* Цвет ссылок в темной теме (черный) */
+}
+
+.pagination .page-link:hover {
+    color: #0056b3; /* Цвет ссылок при наведении (темный синий) */
+}
+
+.dark-theme .pagination .page-link:hover {
+    color: #333; /* Цвет ссылок при наведении в темной теме (темно-серый) */
+}
