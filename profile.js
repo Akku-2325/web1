@@ -1,34 +1,41 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const username = localStorage.getItem("username"); // Получаем имя пользователя
-    const email = localStorage.getItem("userEmail"); // Получаем email
-    const registrationDate = localStorage.getItem("registrationDate"); // Получаем дату регистрации
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("userEmail");
+    const registrationDate = localStorage.getItem("registrationDate");
 
-    // Отображаем имя пользователя, email и дату регистрации
     const usernameElement = document.getElementById("usernameDisplay");
-    const emailElement = document.getElementById("emailDisplay"); // Элемент для отображения email
+    const emailElement = document.getElementById("emailDisplay");
     const registrationDateElement = document.getElementById("registrationDateDisplay");
 
     if (usernameElement && username) {
-        usernameElement.textContent = username; // Отображаем имя
+        usernameElement.textContent = username;
     }
     if (emailElement && email) {
-        emailElement.textContent = email; // Отображаем email
+        emailElement.textContent = email;
     }
     if (registrationDateElement && registrationDate) {
-        registrationDateElement.textContent = registrationDate; // Отображаем дату регистрации
+        registrationDateElement.textContent = registrationDate;
     }
 
-    // Проверка подписки
-    const isSubscribed = localStorage.getItem("isSubscribed") === "true"; // Проверка подписки
+    const isSubscribed = localStorage.getItem("isSubscribed") === "true";
     const subscriptionStatusElement = document.getElementById("subscriptionStatus");
 
     if (subscriptionStatusElement) {
-        subscriptionStatusElement.textContent = isSubscribed ? 
-            "Подписан! Новости о новинках будут приходить на ваш email!" : 
+        subscriptionStatusElement.textContent = isSubscribed ?
+            "Подписан! Новости о новинках будут приходить на ваш email!" :
             "Не подписан...";
     }
 
-    // Уведомление
+    // Кнопка для отмены подписки
+    const unsubscribeBtn = document.getElementById('unsubscribeBtn');
+    if (unsubscribeBtn) {
+        unsubscribeBtn.addEventListener('click', function () {
+            localStorage.setItem("isSubscribed", "false");
+            subscriptionStatusElement.textContent = "Не подписан...";
+            createNotification("Вы успешно отписались от рассылки.", false);
+        });
+    }
+
     const createNotification = (message, isSuccess = true) => {
         const notification = document.createElement('div');
         notification.style.position = 'fixed';
@@ -47,19 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     };
 
-    // Валидация пароля
-    const validatePassword = (currentPassword, newPassword, confirmNewPassword) => {
-        if (newPassword !== confirmNewPassword) {
-            createNotification('Новый пароль и подтверждение не совпадают.', false);
-            return false;
-        }
-        return true;
-    };
-
-    // Обработчик отправки формы изменения пароля
     const changePasswordForm = document.getElementById('changePasswordForm');
     if (changePasswordForm) {
-        changePasswordForm.addEventListener('submit', function(event) {
+        changePasswordForm.addEventListener('submit', function (event) {
             event.preventDefault();
             const currentPassword = document.getElementById('currentPassword').value;
             const newPassword = document.getElementById('newPassword').value;
@@ -72,48 +69,57 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            if (validatePassword(currentPassword, newPassword, confirmNewPassword)) {
-                localStorage.setItem("userPassword", btoa(newPassword));
-                createNotification('Пароль успешно изменён!');
-
-                // Закрыть модальное окно после изменения пароля
-                $('#changePasswordModal').modal('hide');
-                changePasswordForm.reset(); // Очистить форму
+            if (newPassword !== confirmNewPassword) {
+                createNotification('Новый пароль и подтверждение не совпадают.', false);
+                return;
             }
+
+            localStorage.setItem("userPassword", btoa(newPassword));
+            createNotification('Пароль успешно изменён!');
+            $('#changePasswordModal').modal('hide');
+            changePasswordForm.reset();
         });
     }
 
-    // Обработчик для выхода из системы
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', function() {
+        logoutBtn.addEventListener('click', function () {
             localStorage.removeItem('userToken');
             localStorage.setItem("isAuthenticated", "false");
             createNotification('Вы вышли из системы.');
-            window.location.href = 'index.html'; 
+            window.location.href = 'index.html';
         });
     }
 
-    // Работа с элементами "Посмотреть позже"
     const watchLaterSection = document.querySelector("#watchLater");
     const watchLaterMovies = JSON.parse(localStorage.getItem("watchLaterMovies")) || [];
 
     if (watchLaterMovies.length > 0) {
-        watchLaterSection.innerHTML = ''; // Очищаем контейнер перед добавлением новых элементов
-        watchLaterMovies.forEach(movie => {
+        watchLaterSection.innerHTML = '';
+        watchLaterMovies.forEach((movie, index) => {
             const movieEl = document.createElement("div");
             movieEl.classList.add("movie");
             movieEl.innerHTML = `
                 <div class="movie__cover-inner">
                     <img src="${movie.posterUrlPreview}" class="movie__cover" alt="${movie.nameRu}" />
-                    <div class="movie__cover--darkened"></div>
                 </div>
                 <div class="movie__info">
                     <div class="movie__title">${movie.nameRu}</div>
                     <div class="movie__category">${movie.genres.map(genre => ` ${genre.genre}`).join(', ')}</div>
+                    <button class="remove-movie-btn" data-index="${index}">Удалить</button>
                 </div>
             `;
             watchLaterSection.appendChild(movieEl);
+        });
+
+        document.querySelectorAll(".remove-movie-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const movieIndex = this.getAttribute("data-index");
+                watchLaterMovies.splice(movieIndex, 1);
+                localStorage.setItem("watchLaterMovies", JSON.stringify(watchLaterMovies));
+                createNotification("Фильм удалён из списка.");
+                location.reload();
+            });
         });
     } else {
         watchLaterSection.innerHTML = `<p>Нет фильмов в списке "Посмотреть позже".</p>`;
