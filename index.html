@@ -1,67 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Movie App</title>
+  </head>
+  <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КиноКаталог</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
     <div id="overlay">
-    <div class="overlay-content">
-        <h2>Пожалуйста, войдите или зарегистрируйтесь</h2>
-        <button id="register-btn"><a href="register.html">Зарегистрироваться/Войти</a></button>
-    </div>
-</div>
-
-    
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">КиноКаталог</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto" id="navbarMenu">
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Профиль</a>
-                </li>
-                <li class="nav-item">
-                    <button id="subscribeBtn" style="border: none; background: none; color: #f8f9fa;">
-                        Подписаться
-                    </button>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Жанры
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="korean-movies.html">Корейские фильмы</a>
-                        <a class="dropdown-item" href="comedies.html">Комедии</a>
-                        <a class="dropdown-item" href="horrors.html">Ужасы</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="all-movies.html">Все фильмы</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <button id="themeToggle" >
-                        <span class="theme-icon" id="themeIcon">&#9728;</span>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button id="logoutBtn" >
-                        <span>&#x21A9;</span> <!-- Иконка выхода со стрелкой -->
-                    </button>
-                </li>
-            </ul>
+        <div class="overlay-content">
+            <h2>Пожалуйста, войдите или зарегистрируйтесь</h2>
+            <button id="register-btn"><a href="register.html">Зарегистрироваться/Войти</a></button>
         </div>
-    </nav>
+    </div>
     
 
-<!-- Popup for subscription -->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c1e1f;"> <!-- Dark gray background -->
+    <header class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+      <div class="header__content">
+        <a href="index.html" class="header__logo">MovieApp</a>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto" id="navbarMenu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Профиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="subscribeBtn" style="border: none; background: none; color: #f8f9fa;">
+                            Подписаться
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="themeToggle" >
+                            <span class="theme-icon" id="themeIcon">&#9728;</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="logoutBtn" >
+                            <span>&#x21A9;</span> <!-- Иконка выхода со стрелкой -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </nav>
+    </nav>
+
+        <!-- Popup for subscription -->
 <div id="popup" style="display: none;">
     <div id="popupContent">
         <span id="closePopup" style="cursor:pointer; float:right;">&times;</span>
@@ -77,194 +71,71 @@
     </div>
 </div>
 
-
-
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Логин / Регистрация</h2>
-            <form id="authForm">
-                <div class="form-group">
-                    <label for="authEmail">Email:</label>
-                    <input type="email" id="authEmail" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="authPassword">Пароль:</label>
-                    <input type="password" id="authPassword" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Войти</button>
-            </form>
-            <p id="authErrorMsg" style="color: red;"></p>
-        </div>
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Логин / Регистрация</h2>
+        <form id="authForm">
+            <div class="form-group">
+                <label for="authEmail">Email:</label>
+                <input type="email" id="authEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="authPassword">Пароль:</label>
+                <input type="password" id="authPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+        <p id="authErrorMsg" style="color: red;"></p>
     </div>
-    
+</div>
 
-    <div id="movieCarousel" class="carousel slide mb-5" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#movieCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#movieCarousel" data-slide-to="1"></li>
-            <li data-target="#movieCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://is.gd/jKgc4I" class="d-block w-100" alt="Звездные воины">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Рекомендуемые фильмы</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="" class="d-block w-100" alt="Барби">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Рекомендуемые фильмы</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="г (1).jpg" class="d-block w-100" alt="Головоломка 2">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Рекомендуемые фильмы</h5>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#movieCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#movieCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
+  <form id="searchForm">
+    <input type="text" id="searchInput" class="header__search" placeholder="Поиск" />
+  </form>
+  
+      </div>
+    </header>
     <div class="container">
-        <h2 class="my-4">Топ фильмы</h2>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://media.kg-portal.ru/movies/x/xmendaysoffuturepast/posters/xmendaysoffuturepast_13.jpg" class="card-img-top" alt="Топ фильм 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Люди Икс: Дни минувшего будущего</h5>
-                        <p class="card-text">В далеком будущем, когда мир захвачен механизмами, Люди Икс борются за выживание...</p>
-                        <a href="movie.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://cdn.ananasposter.ru/image/cache/catalog/poster/film/81/16068-1000x830.jpg" class="card-img-top" alt="Топ фильм 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Интерстеллар</h5>
-                        <p class="card-text">Краткое описание фильма 2...</p>
-                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/f90a5202-fe42-46bf-b9a7-7c57b2e1d655/600x900" class="card-img-top" alt="Топ фильм 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Джуманджи</h5>
-                        <p class="card-text">Краткое описание фильма 2...</p>
-                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="my-4">Новинки</h2>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://upload.wikimedia.org/wikipedia/ru/f/f1/Дюна_официальный_постер.jpg" class="card-img-top" alt="Новинка 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Дюна</h5>
-                        <p class="card-text">Краткое описание новинки...</p>
-                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://upload.wikimedia.org/wikipedia/ru/c/cc/Sherlock_holmes_a_game_of_shadows.jpg" class="card-img-top" alt="Новинка 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Шерлок Холмс: Игра Теней</h5>
-                        <p class="card-text">Краткое описание новинки...</p>
-                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://upload.wikimedia.org/wikipedia/ru/1/16/Cruella_%282021%29_logo.jpg" class="card-img-top" alt="Новинка 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Круэлла</h5>
-                        <p class="card-text">Краткое описание новинки...</p>
-                        <a href="somepage.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="movies"></div>
+      <div class="modal"></div>
     </div>
-
-    <div class="container">
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="somepage.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="somepage.html">2</a></li>
-                <li class="page-item"><a class="page-link" href="somepage.html">3</a></li>
-                <li class="page-item"><a class="page-link" href="somepage.html">4</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <script src="app.js"></script>
     
+  </body>
 
-    <footer class="footer bg-dark text-white text-center py-4">
-            <div class="faq-container">
-                <h2>Часто задаваемые вопросы</h2>
-                <div class="faq-title">
-                    <span>Как я могу связаться с поддержкой?</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="faq-content" style="display: none;">
-                    <p>Вы можете связаться с поддержкой по электронной почте support@example.com.</p>
-                </div>
-                <div class="separator"></div> <!-- Разделитель -->
-                <div class="faq-title">
-                    <span>Как изменить свой пароль?</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="faq-content" style="display: none;">
-                    <p>Чтобы изменить пароль, перейдите в настройки вашего профиля.</p>
-                </div>
-                <div class="separator"></div> <!-- Разделитель -->
-                <div class="faq-title">
-                    <span>Где я могу найти информацию о новых фильмах?</span>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="faq-content" style="display: none;">
-                    <p>Информация о новых фильмах доступна на главной странице нашего сайта.</p>
-                </div>
-            </div>
-        
-        <strong><p>Aldibayeva Akku</p></strong>
-        <p>SE-2325</p>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
-    <script src="main.js"></script>
+  <footer class="footer bg-dark text-white text-center py-4">
+    <div class="faq-container">
+        <h2>Часто задаваемые вопросы</h2>
+        <div class="faq-title">
+            <span>Как я могу связаться с поддержкой?</span>
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+            <p>Вы можете связаться с поддержкой по электронной почте aldi0606akku@gmail.com.</p>
+        </div>
+        <div class="separator"></div> <!-- Разделитель -->
+        <div class="faq-title">
+            <span>Как изменить свой пароль?</span>
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+            <p>Чтобы изменить пароль, перейдите в настройки вашего профиля.</p>
+        </div>
+        <div class="separator"></div> <!-- Разделитель -->
+        <div class="faq-title">
+            <span>Где я могу найти информацию о новых фильмах?</span>
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-content" style="display: none;">
+            <p>Информация о новых фильмах доступна на главной странице нашего сайта.</p>
+        </div>
     </div>
-</body>
+
+<strong><p>Aldibayeva Akku</p></strong>
+<p>SE-2325</p>
+</footer>
+
+
 
 </html>

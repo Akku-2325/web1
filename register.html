@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">КиноКаталог</a>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c1e1f;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +28,7 @@
         </div>
     </nav>
 
-    <main class="container my-5">
+    <main class="container my-5" id="regform" style = "color: #ffffff;">
         <h1>Регистрация</h1>
         <form id="registrationForm">
             <div class="form-group">
@@ -65,13 +64,8 @@
         <p id="errorMsg" style="color: red;"></p>
     </main>
 
-    <footer class="footer bg-dark text-white text-center py-4">
-        <strong><p>Aldibayeva Akku</p></strong>
-        <p>SE-2325</p>
-    </footer>
-
     <script src="reg.js"></script>
-    <script src="main.js"></script>
+    <script src="common.js"></script>
 
 </body>
 
